@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+<div class="dj-banner">
+    <div class="dj-bg">
+        <img src="/images/img-principal.png" alt="" height="400px">
+        <div class="dj-text">
+            <h1><b>Depositos</b></h1>
+            <p>Tiene disponible {{monto | usd}}.</p>
+            </a></p>
+        </div>
+    </div>
+</div>
+
+<div class="productos">
+{% for cuenta in cuenta%}
+    <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{cuenta.tipo_cuenta}}</h5>
+        <p class="card-text">Monto:
+        {% if cuenta.moneda == "Dolares" %}
+            {{ cuenta.monto | usd }}
+
+        {% else %}
+
+        {{ cuenta.monto | nio }}
+
+        {% endif %}
+        </p>
+        <a href="#" class="btn btn-primary">Visualizar.</a>
+    </div>
+    </div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+.logo{
+    width: 10%;
+}
+.botm{
+    text-align: left;
+}
+#team-body{
+    background-color: orange;
+}
+
+.team-logo{
+    width: 200px;
+    height: 200px;
+    margin: 15px;
+}
+
+.team-nav{
+    /*background-color: Black !important;*/
+    background-color: Black !important;
+}
+
+.team-word{
+    color: white !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-family: 35px !important;
+
+}
+
+.team-word-foot{
+    color: white !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-family: 35px !important;
+    margin: 15px;
+}
+
+.team-Container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+
+.team-dep-word{
+    color: white !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-family: 35px !important;
+    margin: 15px;
+}

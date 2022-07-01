@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{%block title%}
+
+Realizar transacción
+
+{% endblock%}
+
+{% block main%}
+
+<div class="content">
+    <div class="row mi-cuenta">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-header">
+                    <form action="/transaccion" id="transaccion" method="post">
+                        <h3 class="sign pt-2 pb-2" align="center">Enviar dinero</h3>
+                        <div class="form-group">
+                            <div class="inputs">
+
+                           
+                            <label for="cartera">
+                            Seleccione cuenta a debitar:
+                            </label>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cuentaorigen" id="cartera">
+                                <i class="fas fa-wallet"></i>
+                                </button>
+
+                                <br>
+                                <br>
+
+                            <label for="cartera">
+                            Seleccione cuenta a depositar:
+                            </label>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cuentadestino" id="cartera">
+                                <i class="fas fa-wallet"></i>
+                                </button>
+
+                                <br>
+
+                                <label for="monto">
+                                    Monto:
+                                </label>
+                                <input name="monto" type="text" id="monto" class="form-control mx-auto w-auto" required>
+
+                                <label for="asunto">
+                                    Asunto:
+                                </label>
+                                <input name="asunto" type="text" id="asunto" class="form-control mx-auto w-auto" required>
+
+                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Go</button>
+
+
+
+
+                                <div class="modal fade" id="cuentaorigen" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Cuenta debitar</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <select class="form-control mb-3" name="cuentao">
+                                        <option selected="" disabled>Cuenta</option>
+                                    {% for cuenta in cuenta %}
+                                        <option value="{{ cuenta["numCuenta"] }}">{{ cuenta["numCuenta"] }}
+                                                monto= {{ cuenta["monto"] }}
+                                        </option>
+                                    {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <input type="submit" class="btn btn-primary" form="transaccion" value="guardar">
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+
+
+
+                                <div class="modal fade" id="cuentadestino" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">A quien le hará el envio.</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label for="moneda">
+                                        Moneda:
+                                        </label>
+
+                                     <select class="form-control mb-3" name="moneda">
+                                        <option selected="" disabled>Moneda</option>
+                                    {% for moneda in moneda %}
+                                        <option value="{{ moneda["id"] }}">{{ moneda["descripcion"] }}
+                                        </option>
+                                    {% endfor %}
+                                        </select>
+
+                                        <label for="cuentadest">
+                                        Numero de cuenta:
+                                        </label>
+
+                                        <input name="cuentadest" type="text" id="cuentadest" class="form-control mx-auto w-auto" required>
+
+                                        <br>
+
+                                        <label for="destinatario">
+                                        Nombre del destinatario:
+                                        </label>
+
+                                        <input name="destinatario" type="text" id="destinatario" class="form-control mx-auto w-auto" required>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <input type="submit" class="btn btn-primary" form="transaccion" value="guardar">
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

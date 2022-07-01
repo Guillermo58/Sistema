@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{%block title%}
+
+Revisar cuentas
+
+{% endblock%}
+
+{% block main%}
+<BR></BR>
+<div class="content">
+    <div class="row mt-5">
+      <div class="col-md-12 mt-5">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"> Cuentas en espera de aprobación</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class=" text-primary">
+                  <tr>
+                    <th>
+                    Usuario
+                    </th>
+                    <th>
+                    Tipo de cuenta
+                    </th>
+                    <th>
+                    Moneda
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for cuenta in cuentas%}
+                  <tr>
+                    <td>
+                      {{cuenta["nombre"]}}
+                    </td>
+                    <td>
+                      {{cuenta["tipo_cuenta"]}}
+                    </td>
+                    <td>
+                      {{cuenta["moneda"]}}
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="/aprobado?id={{cuenta["id"]}}"><i class="fas fa-check"></i></a>
+                    </td>
+                    <td>
+                      <a class="btn btn-primary" onclick="denegar({{cuenta["id"]}})"><i class="fas fa-minus"></i></a>
+                  </td>
+                  </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+{% endblock %}

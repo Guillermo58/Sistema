@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Solicitar Cuenta
+{% endblock %}
+
+{% block main %}
+    <form action="/solicitar_cuenta" method="post">
+
+        <div class="mb-3">
+            <label for="cars" class="team-dep-word">Seleccione el tipo de moneda:</label>
+            <select name="moneda" id="moneda" >
+            {% for moneda in moneda%}
+                <option value="{{moneda.id}}">{{moneda.descripcion}}</option>
+            {% endfor %}
+
+            </select>
+            <br><br>
+        </div>
+
+        <div class="mb-3">
+            <label for="cars" class="team-dep-word">Seleccione el tipo de cuenta:</label>
+            <select name="tipo" id="tipo">
+            {% for tipo in tipo%}
+                <option value="{{tipo.id}}">{{tipo.descripcion}}</option>
+            {% endfor %}
+
+            </select>
+            <br><br>
+        </div>
+        <button class="btn btn-primary" type="submit">Solicitar cuenta</button>
+    </form>
+{% endblock %}
